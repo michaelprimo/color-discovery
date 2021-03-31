@@ -88,6 +88,7 @@ function show_togglecolor()
   let buttonLetters = document.querySelectorAll('#user-letters .letter');
   for(let j = 0; j < buttonLetters.length; j++)
   {
+    
     if(toggle[j] == true && buttonLetters[j].textContent != "")
     {
       buttonLetters[j].style.backgroundColor = "lightyellow";
