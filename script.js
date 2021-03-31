@@ -22,6 +22,8 @@ giveLettersClick();
 //call every function that initialize the game.
 init();
 
+alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i 50 livelli?")
+
 //the function allow the game to start and initialize.
 function init()
 {
@@ -250,7 +252,7 @@ function check_gameover()
 {
   if(level >= realColors.length-1)
   {
-    alert("you win");
+    alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Punteggio: " + points + "!");
     window.location.reload(true);
   }
   console.log("Level: " + level + " realColors.length: " + realColors.length);
