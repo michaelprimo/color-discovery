@@ -152,6 +152,10 @@ function getRandomInt(n) {
 function giveLetters(a)
 {
   let buttonLetters = document.querySelectorAll('#user-letters .letter');
+  for(let j = 0; j < buttonLetters.length; j++)
+  {
+    buttonLetters[j].innerHTML = "";
+  }
   for(let j = 0; j < a[level].length; j++)
   {
     buttonLetters[j].innerHTML = a[level].charAt(j);
