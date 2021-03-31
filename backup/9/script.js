@@ -9,7 +9,7 @@ const pointsPerLetter = 100;
 //list of the real names of the colors.
 let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano'];
 //list of the edited names of the colors.
-let nameColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano'];
+let nameColors = ['lavandaebczf', 'magentahrkzp','rosabcdfytp','melanzanawkj','troncoiulpea','castagnombvc','angurialpoiy','salmonebczxw','aragostawzxdf','coralloebckp','azaleadcbkg','ciliegiakpouy','rossohjklgfd','bordeauxwaz','platinofghjk','conchigliasd','granotyfeuil','pescahjklfdx','arancioneuyt','oroaeiuptkjz','moganoertyvb','avorioeuvpjh','beigeauiyxzf','albicoccaute','carbonehfdsx','ramesdfghjkl','zafferanotyu','cioccolatovb','limonezxcvbn','giallosdftwe','verdebnmczb','acquamarinab','giadauopytfh','antracitevcx','ardesiofgh','celesteyuiop','azzurroeiucv','bluaeioptry','lillaopuytgb','glicinecvbnm','orchideazxc','ametistayuopd','violabnmxcvz','indacosdfghj','prugnasdfohj','grigioazxsdc','neroasdvbmwy','cianoeuytrvb'];
 //list of the real colors to put on the center, to the #color div.
 let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85','#ff8c69','#ed7465','#ff7f50','#d3305d','#de3163','#ff0000','#800000','#e5e4e2','#fff5ee','#f5deb3','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#293133','#708090','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#c9a0dc','#da70d6','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff'];
 //this array contains the letters of the players.
@@ -25,7 +25,6 @@ init();
 //the function allow the game to start and initialize.
 function init()
 {
-  show_togglecolor();
   resetVariables();
   // refresh the level UI.
   showLevel();
@@ -41,7 +40,6 @@ function init()
   getColor();
 
   letterSelectedmax();
-  show_togglecolor();
 }
 
 function letterSelectedmax()
@@ -86,14 +84,7 @@ function show_togglecolor()
   let buttonLetters = document.querySelectorAll('#user-letters .letter');
   for(let j = 0; j < buttonLetters.length; j++)
   {
-    if(toggle[j] == true && buttonLetters[j].textContent != "")
-    {
-      buttonLetters[j].style.backgroundColor = "lightyellow";
-    }
-    else
-    {
-      buttonLetters[j].style.backgroundColor = "grey";
-    }
+    buttonLetters[j].style.backgroundColor = "lightyellow";
   }
 }
 
@@ -165,7 +156,7 @@ function giveLettersClick()
   {
     buttonLetters[j].addEventListener("click", function()
     {
-      if(toggle[j] == true && buttonLetters[j].textContent != "")
+      if(toggle[j] == true)
       {
         this.style.backgroundColor = "grey";
         toggle[j] = !toggle[j];
