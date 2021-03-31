@@ -1,0 +1,194 @@
+//COLOR DISCOVERY
+
+//set the actual level of the game.
+let level = 0;
+//set the points you have earned.
+let points = 0;
+//this const decide of much points give to the player for every color finded. 
+const pointsPerLetter = 100;
+//list of the real names of the colors.
+let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria'];
+//list of the edited names of the colors.
+let nameColors = ['lavandaccccc', 'magentaccccc','rosacccccccc','melanzanaccc','troncocccccc','castagnocccc','anguriaccccc'];
+//list of the real colors to put on the center, to the #color div.
+let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85'];
+//this array contains the letters of the players.
+let letterContainer = [];
+// this toggle allows the game to find any button if it's clicked or not.
+let toggle = createToggle();
+
+// give a event listener to every button with a letter.
+giveLettersClick();
+//call every function that initialize the game.
+init();
+
+//the function allow the game to start and initialize.
+function init()
+{
+  // refresh the level UI.
+  showLevel();
+  // refresh the points UI.
+  showPoints();
+  // This allows to create a "seed" for every game and play.
+  shuffleArray(nameColors, levelColors, realColors);
+  // Call the function which allows to randomize every string of nameColors.
+  randomizeString(nameColors);
+  // give the letters to every button without letters on the board or refresh it.
+  giveLetters(nameColors);
+  // give the starting color to discovery to the main color button.
+  getColor();
+}
+
+//show the current level reached on the UI
+function showLevel()
+{
+  // store the DOM element #UI_level on the UI_level variable.
+  let UI_level = document.querySelector("#UI_level");
+  // refresh the UI.
+  UI_level.innerHTML = 'Level ' + (level + 1) + "";
+}
+
+//show the current points obtained on the UI
+function showPoints()
+{
+  // store the DOM element with the class #UI_points on the UI_points variable.
+  let UI_points = document.querySelector("#UI_points");
+  // refresh the UI.
+  UI_points.innerHTML = 'Points ' + points + "";
+}
+
+// calculate the points earned of the level for giving it to the player. Call only at the end of the level and before switching to the next.
+function givePoints()
+{
+  //store the string of the result of the level for calculate the result in points.
+  let levelLetters = realColors[level];
+  //calculate the result based on the letters of the level result multiplying it with the const containing the amount of points per letter.
+  let pointsObtained = levelLetters.length * pointsPerLetter;
+  // give the points calculated.
+  points += pointsObtained;
+  //refresh the UI with the extra added points.
+  showPoints();
+}
+
+
+function getColor()
+{
+    let guessingColor = document.querySelector('#user-letters #color');
+    guessingColor.style.backgroundColor = levelColors[level];
+}
+
+function randomizeString(nameColors)
+{
+    let randomChar;
+    for(var i = 0; i < nameColors.length; i++)
+    {
+      nameColors[i] = shuffle(nameColors[i]);
+    }
+}
+
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ * @param {Array} b items An array containing the items.
+ */
+ function shuffleArray(a, b, c) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+        [b[i], b[j]] = [b[j], b[i]];
+        [c[i], c[j]] = [c[j], c[i]];
+    }
+    return a;
+}
+
+function getRandomInt(n) {
+    return Math.floor(Math.random() * n);
+  }
+  function shuffle(s) {
+    var arr = s.split('');           // Convert String to array
+    var n = arr.length;              // Length of the array
+    
+    for(var i=0 ; i<n-1 ; ++i) {
+      var j = getRandomInt(n);       // Get random of [0, n-1]
+      
+      var temp = arr[i];             // Swap arr[i] and arr[j]
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+    
+    s = arr.join('');                // Convert Array to string
+    return s;                        // Return shuffled string
+  }
+
+function giveLetters(a)
+{
+  let buttonLetters = document.querySelectorAll('#user-letters .letter');
+  for(let j = 0; j < a[level].length; j++)
+  {
+    buttonLetters[j].innerHTML = a[level].charAt(j);
+  }
+  
+}
+
+function giveLettersClick()
+{
+
+  let buttonLetters = document.querySelectorAll('#user-letters .letter');
+  for(let j = 0; j < buttonLetters.length; j++)
+  {
+    buttonLetters[j].addEventListener("click", function()
+    {
+      if(toggle[j] == true)
+      {
+        toggle[j] = !toggle[j];
+        letterContainer.push(buttonLetters[j].textContent);
+        showLetters();
+      }
+    });
+  }
+}
+
+function createToggle()
+{
+  let buttonLetters = document.querySelectorAll('#user-letters .letter');
+  let buttonToggle = [];
+  for(let i = 0; i < buttonLetters.length; i++)
+  {
+    buttonToggle[i] = true;
+  }
+  return buttonToggle;
+} 
+
+function resetToggle()
+{
+  for(let i = 0; i < toggle.length; i++)
+  {
+    toggle[i] = true;
+  }
+}
+
+function showLetters()
+{
+  let curLetters = document.querySelector('#letterSelected');
+  let stringLetter = "";
+  for(let i = 0; i < letterContainer.length; i++)
+  {
+    stringLetter += letterContainer[i];
+  }
+  curLetters.innerHTML = stringLetter;
+  winningConditions(curLetters, stringLetter);
+}
+
+function winningConditions(curLetters, stringLetter)
+{
+  if(stringLetter == realColors[level])
+  {
+    givePoints();
+    level++;
+    giveLetters(nameColors);
+    getColor();
+    showLevel();
+    resetToggle();
+    letterContainer = [];
+  }
+}
