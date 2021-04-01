@@ -21,6 +21,8 @@ const maxLevel = 30;
 
 let hints = 0;
 
+let easyMode = false;
+
 let hintContainer = [];
 
 const hintCost = 300;
@@ -119,18 +121,19 @@ function getColor()
 
 function randomizeString()
 {
-    let randomChar;
-    for(var i = 0; i < nameColors.length; i++)
+  let buttonLetters = document.querySelectorAll('#user-letters .letter');
+  let randomChar;
+  for(var i = 0; i < nameColors.length; i++)
+  {
+
+    for(var j = nameColors[i].length; j < buttonLetters.length; j++)
     {
-
-      for(var j = nameColors[i].length; j < 12; j++)
-      {
-          randomChar = Math.floor(Math.random() * 26) + 97;
-          nameColors[i] = nameColors[i] + String.fromCharCode(randomChar);
-      }
-
-      nameColors[i] = shuffle(nameColors[i]);
+        randomChar = Math.floor(Math.random() * 26) + 97;
+        nameColors[i] = nameColors[i] + String.fromCharCode(randomChar);
     }
+
+    nameColors[i] = shuffle(nameColors[i]);
+  }
 }
 
 /**
@@ -366,4 +369,20 @@ function resetHints()
   hints = 0;
   hintContainer = [];
   showLettersHint();
+}
+
+function changeMode()
+{
+  if(easyMode == false)
+  {
+    if(confirm("Vuoi rimuovere tutte le lettere inutili del livello?"))
+    {
+      easyMode = true;
+      randomizeString();
+    }
+  }
+  if(easyMode == true)
+  {
+    alert("è già stato utilizzato il cambio di modalità per questo livello.")
+  }
 }
