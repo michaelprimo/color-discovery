@@ -43,7 +43,7 @@ function init()
   giveLetters(nameColors);
   // give the starting color to discovery to the main color button.
   getColor();
-
+  randomizeString();
   letterSelectedmax();
   show_togglecolor();
 }
@@ -112,6 +112,7 @@ function getColor()
 function randomizeString()
 {
     let randomChar;
+/*
     for(var i = 0; i < nameColors.length; i++)
     {
         for(var j = nameColors[i].length; j < 12; j++)
@@ -119,6 +120,7 @@ function randomizeString()
             randomChar = Math.floor(Math.random() * 26) + 97;
             nameColors[i] = nameColors[i] + String.fromCharCode(randomChar);
         }
+*/
         nameColors[i] = shuffle(nameColors[i]);
         console.log(nameColors[i], "/", levelColors[i]);
     }
