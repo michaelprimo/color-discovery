@@ -7,26 +7,22 @@ let points = 0;
 //this const decide of much points give to the player for every color finded. 
 const pointsPerLetter = 100;
 //list of the real names of the colors.
-let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento'];
+let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano'];
 //list of the edited names of the colors.
-let nameColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento'];
+let nameColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano'];
 //list of the real colors to put on the center, to the #color div.
-let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85','#ff8c69','#ed7465','#ff7f50','#d3305d','#de3163','#ff0000','#800000','#e5e4e2','#fff5ee','#f5deb3','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#293133','#708090','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#c9a0dc','#da70d6','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff','#993366','#e30b5c','#f400a1','#c0007f','#e52b50','#dc143c','#7b1b02','#ff2400','#ff4d00','#b20000','#960018','#92000a','#800020','#410012','#f4f0ec','#faf0e6','#ffefd5','#ffe4c4','#c3b091','#d2b48c','#d2b48c','#c2b280','#f0dc82','#3d2b1f','#ebb55f','#f4a460','#cd7f32','#704214','#cc7722','#daa520','#ffbf00','#ffcc00','#964b00','#fffdd0','#9ab973','#d1e231','#fde910','#7fff00','#ccff00','#ace1af','#87a96b','#93c572','#00a86b','#30d5c8','#007ba7','#708090','#5d8aa8','#0047ab','#ccccff','#d8bfd8','#df73ff','#dcdcdc','#c0c0c0'];
+let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85','#ff8c69','#ed7465','#ff7f50','#d3305d','#de3163','#ff0000','#800000','#e5e4e2','#fff5ee','#f5deb3','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#293133','#708090','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#c9a0dc','#da70d6','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff'];
 //this array contains the letters of the players.
 let letterContainer = [];
 // this toggle allows the game to find any button if it's clicked or not.
 let toggle = createToggle();
-
-const maxLevel = 30;
-
-let hints = 0;
 
 // give a event listener to every button with a letter.
 giveLettersClick();
 //call every function that initialize the game.
 init();
 
-alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i 30 livelli?")
+alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i 50 livelli?")
 
 //the function allow the game to start and initialize.
 function init()
@@ -40,7 +36,7 @@ function init()
   // This allows to create a "seed" for every game and play.
   shuffleArray(nameColors, levelColors, realColors);
   // Call the function which allows to randomize every string of nameColors.
-  randomizeString();
+  randomizeString(nameColors);
   // give the letters to every button without letters on the board or refresh it.
   giveLetters(nameColors);
   // give the starting color to discovery to the main color button.
@@ -111,20 +107,12 @@ function getColor()
     guessingColor.style.backgroundColor = levelColors[level];
 }
 
-function randomizeString()
+function randomizeString(nameColors)
 {
     let randomChar;
     for(var i = 0; i < nameColors.length; i++)
     {
-      /*
-        for(var j = nameColors[i].length; j < 12; j++)
-        {
-            randomChar = Math.floor(Math.random() * 26) + 97;
-            nameColors[i] = nameColors[i] + String.fromCharCode(randomChar);
-        }
-        */
-        nameColors[i] = shuffle(nameColors[i]);
-        console.log(nameColors[i], "/", levelColors[i]);
+      nameColors[i] = shuffle(nameColors[i]);
     }
 }
 
@@ -267,7 +255,7 @@ function showLetters()
 
 function check_gameover()
 {
-  if(level >= maxLevel-1)
+  if(level >= realColors.length-1)
   {
     alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Punteggio: " + points + "!");
     window.location.reload(true);
@@ -305,3 +293,4 @@ function resetVariables()
   points = 0;
   showPoints();
 }
+

@@ -17,8 +17,6 @@ let letterContainer = [];
 // this toggle allows the game to find any button if it's clicked or not.
 let toggle = createToggle();
 
-const maxLevel = 30;
-
 let hints = 0;
 
 // give a event listener to every button with a letter.
@@ -26,7 +24,7 @@ giveLettersClick();
 //call every function that initialize the game.
 init();
 
-alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i 30 livelli?")
+alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i 50 livelli?")
 
 //the function allow the game to start and initialize.
 function init()
@@ -116,13 +114,11 @@ function randomizeString()
     let randomChar;
     for(var i = 0; i < nameColors.length; i++)
     {
-      /*
         for(var j = nameColors[i].length; j < 12; j++)
         {
             randomChar = Math.floor(Math.random() * 26) + 97;
             nameColors[i] = nameColors[i] + String.fromCharCode(randomChar);
         }
-        */
         nameColors[i] = shuffle(nameColors[i]);
         console.log(nameColors[i], "/", levelColors[i]);
     }
@@ -267,7 +263,7 @@ function showLetters()
 
 function check_gameover()
 {
-  if(level >= maxLevel-1)
+  if(level >= realColors.length-1)
   {
     alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Punteggio: " + points + "!");
     window.location.reload(true);
