@@ -38,7 +38,7 @@ function init()
   // This allows to create a "seed" for every game and play.
   shuffleArray(nameColors, levelColors, realColors);
   // Call the function which allows to randomize every string of nameColors.
-  randomizeString();
+  
   // give the letters to every button without letters on the board or refresh it.
   giveLetters(nameColors);
   // give the starting color to discovery to the main color button.
