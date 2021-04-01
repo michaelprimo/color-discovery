@@ -50,7 +50,6 @@ html
     letter-spacing: 10px;
     font-size: 40px;
     text-transform: uppercase;
-    margin-left: 10px;
 }
 
 #hintSelected
@@ -63,7 +62,6 @@ html
     font-size: 40px;
     text-transform: uppercase;
     color: grey;
-    margin-left: 10px;
 }
 
 #UI_Row
