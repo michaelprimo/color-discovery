@@ -17,8 +17,6 @@ let letterContainer = [];
 // this toggle allows the game to find any button if it's clicked or not.
 let toggle = createToggle();
 
-let hints = 0;
-
 // give a event listener to every button with a letter.
 giveLettersClick();
 //call every function that initialize the game.
@@ -38,12 +36,12 @@ function init()
   // This allows to create a "seed" for every game and play.
   shuffleArray(nameColors, levelColors, realColors);
   // Call the function which allows to randomize every string of nameColors.
-  
+  randomizeString(nameColors);
   // give the letters to every button without letters on the board or refresh it.
   giveLetters(nameColors);
   // give the starting color to discovery to the main color button.
   getColor();
-  randomizeString();
+
   letterSelectedmax();
   show_togglecolor();
 }
@@ -109,12 +107,12 @@ function getColor()
     guessingColor.style.backgroundColor = levelColors[level];
 }
 
-function randomizeString()
+function randomizeString(nameColors)
 {
     let randomChar;
-
-        nameColors[i] = shuffle(nameColors[i]);
-        console.log(nameColors[i], "/", levelColors[i]);
+    for(var i = 0; i < nameColors.length; i++)
+    {
+      nameColors[i] = shuffle(nameColors[i]);
     }
 }
 
@@ -295,3 +293,4 @@ function resetVariables()
   points = 0;
   showPoints();
 }
+
