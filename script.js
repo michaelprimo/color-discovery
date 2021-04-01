@@ -112,15 +112,7 @@ function getColor()
 function randomizeString()
 {
     let randomChar;
-/*
-    for(var i = 0; i < nameColors.length; i++)
-    {
-        for(var j = nameColors[i].length; j < 12; j++)
-        {
-            randomChar = Math.floor(Math.random() * 26) + 97;
-            nameColors[i] = nameColors[i] + String.fromCharCode(randomChar);
-        }
-*/
+
         nameColors[i] = shuffle(nameColors[i]);
         console.log(nameColors[i], "/", levelColors[i]);
     }
