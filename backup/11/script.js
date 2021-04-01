@@ -301,3 +301,19 @@ function resetVariables()
   points = 0;
   showPoints();
 }
+
+function hintLetter()
+{
+  
+  /*
+  let buttonLetters = document.querySelectorAll('#user-letters .letter');
+  for(let j = 0; j < buttonLetters.length; j++)
+  {
+    if(realColor)
+    {
+      buttonLetters[j].style.backgroundColor = "green";
+    }
+  }
+  */
+  if
+}

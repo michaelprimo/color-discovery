@@ -13,6 +13,10 @@
             <div id="UI_level">Livello 1</div>
             <div id="UI_points">Punti 0</div>
         </div>
+        <div id="UI_Row">
+            <button id="skipButton" onclick="hintLetter();">Easy</button>
+            <button id="skipButton" onclick="skipLevel();">Hard</button>
+        </div>
         <div id="user-letters">
             <div class="letter" id="0"></div>
             <div class="letter" id="1"></div>
@@ -30,6 +34,8 @@
         </div>
         <div id="letterSelected"></div>
         <div id="UI_Row">
+            <button id="skipButton" onclick="hintLetter();">Cerca Lettera</button>
+            <button id="skipButton" onclick="skipLevel();">Aiuto Lettera</button>
             <button id="skipButton" onclick="window.location.reload(true);">Ricarica</button>
             <button id="skipButton" onclick="skipLevel();">Salta Livello</button>
             <button id="resetButton" onclick="resetButton();">Reset Lettere</button>
