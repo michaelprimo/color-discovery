@@ -11,11 +11,11 @@ const pointsPerLetter = 100;
 let arr = ["1", "2", "3", "4", "5"];
 
 //list of the real names of the colors.
-let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','denim','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento','fiamma','scuolabus','savoia','fiordaliso','acqua','alice','bondi','cadetto','capri','cielo','dodger','klein','colomba','menta','notte','oltremare','cenere','ottone','oliva','mountbatten','shocking','cardinale','fragola','mattone','pompeiano','tiziano','veneziano','violaceo','fuoco','pomodoro','caraibi','foresta','primavera','smeraldo','veronese','fantasma','floreale','fumo','navajo','polvere','napoli','segnale','topo','muschio','pino','ufficio','violetto'];
+let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento'];
 //list of the edited names of the colors.
-let nameColors  = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','denim','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento','fiamma','scuolabus','savoia','fiordaliso','acqua','alice','bondi','cadetto','capri','cielo','dodger','klein','colomba','menta','notte','oltremare','cenere','ottone','oliva','mountbatten','shocking','cardinale','fragola','mattone','pompeiano','tiziano','veneziano','violaceo','fuoco','pomodoro','caraibi','foresta','primavera','smeraldo','veronese','fantasma','floreale','fumo','navajo','polvere','napoli','segnale','topo','muschio','pino','ufficio','violetto'];
+let nameColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento'];
 //list of the real colors to put on the center, to the #color div.
-let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85','#ff8c69','#ed7465','#ff7f50','#d3305d','#de3163','#ff0000','#800000','#e5e4e2','#fff5ee','#f5deb3','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#293133','#1560bd','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#c9a0dc','#da70d6','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff','#993366','#e30b5c','#f400a1','#c0007f','#e52b50','#dc143c','#7b1b02','#ff2400','#ff4d00','#b20000','#960018','#92000a','#800020','#410012','#f4f0ec','#faf0e6','#ffefd5','#ffe4c4','#c3b091','#d2b48c','#d2b48c','#c2b280','#f0dc82','#3d2b1f','#ebb55f','#f4a460','#cd7f32','#704214','#cc7722','#daa520','#ffbf00','#ffcc00','#964b00','#fffdd0','#9ab973','#d1e231','#fde910','#7fff00','#ccff00','#ace1af','#87a96b','#93c572','#00a86b','#30d5c8','#007ba7','#708090','#5d8aa8','#0047ab','#ccccff','#d8bfd8','#df73ff','#dcdcdc','#c0c0c0','#ff9900','#FFD800','#6397d0','#abcdef','#256d7b','#f0f8ff','#0095b6','#5f9ea0','#00bfff','#2271b3','#1E90FF','#3A75C4','#606e8c','#98FF98','#343A90','#120A8F','#E4E5E0','#CC9966','#898437','#997A8D','#FC0FC0','#C41E3A','#CE3018','#B22222','#D21F1B','#ba6262','#C80815','#C71585','#A61022','#FF6347','#00CC99','#228b22','#00FF7F','#50C878','#40826D','#F8F8FF','#FFFAF0','#F5F5F5','#FFDEAD','#B0E0E6','#F7E89F','#E5BE01','#646B63','#ADDFAD','#01796F','#008000','#8000FF'];
+let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85','#ff8c69','#ed7465','#ff7f50','#d3305d','#de3163','#ff0000','#800000','#e5e4e2','#fff5ee','#f5deb3','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#293133','#708090','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#c9a0dc','#da70d6','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff','#993366','#e30b5c','#f400a1','#c0007f','#e52b50','#dc143c','#7b1b02','#ff2400','#ff4d00','#b20000','#960018','#92000a','#800020','#410012','#f4f0ec','#faf0e6','#ffefd5','#ffe4c4','#c3b091','#d2b48c','#d2b48c','#c2b280','#f0dc82','#3d2b1f','#ebb55f','#f4a460','#cd7f32','#704214','#cc7722','#daa520','#ffbf00','#ffcc00','#964b00','#fffdd0','#9ab973','#d1e231','#fde910','#7fff00','#ccff00','#ace1af','#87a96b','#93c572','#00a86b','#30d5c8','#007ba7','#708090','#5d8aa8','#0047ab','#ccccff','#d8bfd8','#df73ff','#dcdcdc','#c0c0c0'];
 //this array contains the letters of the players.
 let letterContainer = [];
 // this toggle allows the game to find any button if it's clicked or not.
@@ -23,9 +23,7 @@ let toggle = createToggle();
 
 const maxLevel = 30;
 
-let hintsUsedLetter = 0;
-
-let hintsUsedShuffle = 0;
+let hints = 0;
 
 let hintContainer = [];
 
@@ -49,7 +47,7 @@ function save()
   localStorage.setItem("hintContainer", jsonArr);
   localStorage.setItem("points", points);
   localStorage.setItem("level", level);
-  localStorage.setItem("hintsUsedLetter", hintsUsedLetter);
+  localStorage.setItem("hints", hints);
 }
 
 function load()
@@ -77,8 +75,8 @@ function load()
   str = Number(localStorage.getItem("points"));
   points = str;
 
-  str = Number(localStorage.getItem("hintsUsedLetter"));
-  hintsUsedLetter = str;
+  str = Number(localStorage.getItem("hints"));
+  hints = str;
 
   refreshUI();
 }
@@ -117,7 +115,7 @@ function init()
   {
     save();
   }
-  if(hintsUsedLetter == 0 && level == 0)
+  if(hints == 0 && level == 0)
   {
     hintContainer = [];
     initialHint();
@@ -393,13 +391,10 @@ function skipLevel()
   let levelLetters = realColors[level];
   //calculate the result based on the letters of the level result multiplying it with the const containing the amount of points per letter.
   let pointsObtained = levelLetters.length * pointsPerLetter;
-
-  let skipPoints = ((hintsUsedShuffle * hintShuffleCost) / 100 * 90) + ((hintsUsedLetter * hintLetterCost) / 100 * 90) + (pointsObtained / 100 * 30);
-  if(confirm("Stai per saltare questo livello per ottenere " + skipPoints + " punti. Sei sicuro di questa scelta?"))
+  if(confirm("Stai per saltare questo livello e i suoi " + pointsObtained + " punti. Sei sicuro di questa scelta?"))
   {
     
     level++;
-    points += skipPoints;
     showLevel();
     giveLetters(nameColors);
     showColor();
@@ -437,16 +432,15 @@ function hintLetterButton()
 
 function initialHint(bool)
 {
-  hintContainer.push(realColors[level][hintsUsedLetter]);
+  hintContainer.push(realColors[level][hints]);
   showLettersHint();
-  hintsUsedLetter++;
+  hints++;
   save();
 }
 
 function resetHints()
 {
-  hintsUsedLetter = 0;
-  hintsUsedShuffle = 0;
+  hints = 0;
   hintContainer = [];
   showLettersHint();
 }
@@ -485,7 +479,6 @@ function hintShuffle()
     if(points >= hintShuffleCost)
     {
       points -= hintShuffleCost;
-      hintsUsedShuffle++;
       nameColors[level] = shuffle(nameColors[level]);
       refreshUI();
     }
@@ -497,44 +490,19 @@ function hintShuffle()
   
 }
 
-/*
-
-let givenStr = "celeste";
-    
-    let ch = ['a','b','c','d','e','f','g','h','i','l','m','n','o','p','q','r','s','t','u','v','z','w','x','k','y','j'];
-    let shuffleLetters = [];
-    let count = 0;
-    
-    for(let i = 0; i < givenStr.length; i++)
-    {
-      for(let j = 0; j < ch.length; j++)
-      {
-        console.log("i: " + i + " j: " + j);
-        if(givenStr.charAt(i) == ch[j])
-        {
-        count++;
-        console.log("Trovato: " + ch[j]);
-        shuffleLetters.push([ch[j]]);
-        }
-        console.log(ch[j]);
-      }
-    }
-    
-    console.log(`Total occurrence : ${count}`);
-
-let str = 'AppDividend';
+str = 'AppDividend';
 console.log('Original String: ', str);
 
-let removeFirstChar = str.slice(1);
+removeFirstChar = str.slice(1);
 console.log('Removing the first character', removeFirstChar);
 
-let removeLastChar = str.slice(0, str.length - 1);
+removeLastChar = str.slice(0, str.length - 1);
 console.log('Removing the last character: ', removeLastChar);
 
 str = 'AppDividend';
 console.log('Original String:', str);
 
-let newStr = str.substr(1, str.length);
+newStr = str.substr(1, str.length);
 console.log('After removing the first character:', newStr);
 
 let gnosia = ['loy'];
@@ -547,7 +515,7 @@ console.log('After character removed: ', newStr);
 str[0] = newStr;
 console.log(newStr);
 
-str = "abc's test#s";
+const str = "abc's test#s";
 console.log(str.replace(/[^a-zA-Z ]/g, ""));
 
 var testArray = ["restfehclaeq", "babblabilcads"];
@@ -557,4 +525,3 @@ function myFunction() {
   var res = testArray[0].replace(/[^c|e|l|s|t]/gi, '');
   document.getElementById("demo").innerHTML = res;
 }
-*/
