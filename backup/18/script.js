@@ -6,10 +6,6 @@ let level = 0;
 let points = 0;
 //this const decide of much points give to the player for every color finded. 
 const pointsPerLetter = 100;
-
-
-let arr = ["1", "2", "3", "4", "5"];
-
 //list of the real names of the colors.
 let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','ardesio','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento'];
 //list of the edited names of the colors.
@@ -29,65 +25,6 @@ let hintContainer = [];
 
 const hintCost = 300;
 
-
-
-
-
-
-function save()
-{
-  let jsonArr = JSON.stringify(arr);
-  localStorage.setItem("arr", jsonArr);
-  jsonArr = JSON.stringify(realColors);
-  localStorage.setItem("realColors", jsonArr);
-  jsonArr = JSON.stringify(nameColors);
-  localStorage.setItem("nameColors", jsonArr);
-  jsonArr = JSON.stringify(levelColors);
-  localStorage.setItem("levelColors", jsonArr);
-  jsonArr = JSON.stringify(hintContainer);
-  localStorage.setItem("hintContainer", jsonArr);
-  localStorage.setItem("points", points);
-  localStorage.setItem("level", level);
-}
-
-function load()
-{
-  let str = localStorage.getItem("arr");
-  let parsedArr = JSON.parse(str);
-  arr = parsedArr;
-  
-  str = localStorage.getItem("realColors");
-  console.log(realColors);
-  parsedArr = JSON.parse(str);
-  console.log(parsedArr);
-  realColors = parsedArr;
-  console.log(realColors);
-
-  str = localStorage.getItem("nameColors");
-  parsedArr = JSON.parse(str);
-  nameColors = parsedArr;
-
-  str = localStorage.getItem("levelColors");
-  parsedArr = JSON.parse(str);
-  levelColors = parsedArr;
-
-  str = localStorage.getItem("hintContainer");
-  parsedArr = JSON.parse(str);
-  hintContainer = parsedArr;
-
-  str = Number(localStorage.getItem("level"));
-  level = str;
-
-  str = Number(localStorage.getItem("points"));
-  points = str;
-
-  refreshUI();
-}
-
-
-
-
-
 // give a event listener to every button with a letter.
 giveLettersClick();
 //call every function that initialize the game.
@@ -98,26 +35,23 @@ alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare l
 //the function allow the game to start and initialize.
 function init()
 {
-  
   show_togglecolor();
   resetVariables();
- 
+  // refresh the level UI.
+  showLevel();
+  // refresh the points UI.
+  showPoints();
   // This allows to create a "seed" for every game and play.
   shuffleArray(nameColors, levelColors, realColors);
   // Call the function which allows to randomize every string of nameColors.
   randomizeString();
-  
-  
-  refreshUI();
-  
-  if(localStorage.getItem("realColors") != null)
-  {
-    load();
-  }
-  else
-  {
-    save();
-  }
+  // give the letters to every button without letters on the board or refresh it.
+  giveLetters(nameColors);
+  // give the starting color to discovery to the main color button.
+  getColor();
+
+  letterSelectedmax();
+  show_togglecolor();
 }
 
 function letterSelectedmax()
@@ -177,7 +111,7 @@ function show_togglecolor()
 }
 
 
-function showColor()
+function getColor()
 {
     let guessingColor = document.querySelector('#user-letters #color');
     guessingColor.style.backgroundColor = levelColors[level];
@@ -374,12 +308,11 @@ function winningConditions(curLetters, stringLetter)
     givePoints();
     level++;
     giveLetters(nameColors);
-    showColor();
+    getColor();
     showLevel();
     resetButton();
     resetHints();
     check_gameover();
-    save();
 }
 
 function skipLevel()
@@ -394,11 +327,10 @@ function skipLevel()
     level++;
     showLevel();
     giveLetters(nameColors);
-    showColor();
+    getColor();
     resetButton();
     resetHints();
     check_gameover();
-    save();
   }
 }
 
@@ -421,7 +353,6 @@ function hintButton()
       points -= hintCost;
       showLettersHint();
       hints++;
-      save();
     }
     else
     {
@@ -437,29 +368,135 @@ function resetHints()
   showLettersHint();
 }
 
-function refreshUI()
+/*
+let array = [1, 2, 3];
+if(localStorage.getItem("array") === "null")
 {
- // refresh the level UI.
- showLevel();
- // refresh the points UI.
- showPoints();
-// give the starting color to discovery to the main color button.
- showColor();
- // give the letters to every button without letters on the board or refresh it.
- giveLetters(nameColors);
- //show every hint letter you used even if you leave the game.
- showLettersHint();
-
- letterSelectedmax();
-
- show_togglecolor();
+  localStorage.setItem("array", JSON.stringify(array));
 }
 
-function resetSave()
+
+array = JSON.parse(localStorage.getItem("array"));
+
+for(let i = 0; i < array.length; i++)
 {
-  if(confirm("Attenzione! Stai per cancellare i dati della partita. Vuoi comunque ricominciare da zero?"))
-  {
-    localStorage.clear();
-    window.location.reload(true);
+  array[i]++;
+}
+
+console.log(typeof array); //object
+console.log(array); //[1, 2, 3]
+
+localStorage.setItem("array", JSON.stringify(array));
+*/
+
+/*
+let array = [1, 2, 3];
+
+if(localStorage.getItem("array") === "null")
+{
+  localStorage.setItem("array", JSON.stringify(array));
+}
+
+  if(typeof(Storage) !== "undefined") {
+    if (localStorage.test) {
+      localStorage.test = Number(localStorage.test)+1;
+    } else {
+      localStorage.test = 1;
+    }
+    if(localStorage.array)
+    {
+      array = JSON.parse(localStorage.getItem("array"));
+    }
+    else 
+    {
+      localStorage.setItem("array", JSON.stringify(array));
+    }
+
+    for(let i = 0; i < array.length; i++)
+    {
+      array[i]++;
+    }
+    
+    
+    console.log("You have clicked the button " + localStorage.test + " time(s).");
+  } else {
+   console.log("Sorry, your browser does not support web storage...");
   }
+*/
+/*
+  // an array
+const arr = [1, 2, 3, 4, 5];
+
+if(localStorage.getItem("array") != null)
+{
+  // get the string
+// from localStorage
+const str = localStorage.getItem("array");
+
+// convert string to valid object
+const arr = JSON.parse(str);
+
 }
+
+for(let i = 0; i < arr.length; i++)
+    {
+      arr[i]++;
+    }
+
+// convert array to JSON string
+// using JSON.stringify()
+const jsonArr = JSON.stringify(arr);
+
+// save to localStorage
+localStorage.setItem("array", jsonArr);
+
+// get the string
+// from localStorage
+const str = localStorage.getItem("array");
+
+// convert string to valid object
+const parsedArr = JSON.parse(str);
+
+console.log(parsedArr);
+*/
+
+// our array
+/*
+var movies = ["Reservoir Dogs", "Pulp Fiction", "Jackie Brown", 
+"Kill Bill", "Death Proof", "Inglourious Basterds"];
+
+if(localStorage.quentinTarantino == null)
+{
+  // storing our array as a string
+  localStorage.setItem("quentinTarantino", JSON.stringify(movies));
+}
+else
+{
+  // retrieving our data and converting it back into an array
+  var retrievedData = localStorage.getItem("quentinTarantino");
+  var movies2 = JSON.parse(retrievedData);
+  movies = movies2;
+}
+
+movies.push("hello");
+
+// storing our array as a string
+localStorage.setItem("quentinTarantino", JSON.stringify(movies));
+
+//making sure it still is an array
+console.log(movies2.length);
+*/
+
+// our array
+var movies = ["Reservoir Dogs", "Pulp Fiction", "Jackie Brown", 
+"Kill Bill", "Death Proof", "Inglourious Basterds"];
+ 
+// storing our array as a string
+localStorage.setItem("quentinTarantino", JSON.stringify(movies));
+ 
+// retrieving our data and converting it back into an array
+var retrievedData = localStorage.getItem("quentinTarantino");
+var movies2 = JSON.parse(retrievedData);
+ 
+//making sure it still is an array
+alert(movies2.length);
