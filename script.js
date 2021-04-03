@@ -27,7 +27,8 @@ let hints = 0;
 
 let hintContainer = [];
 
-const hintCost = 300;
+const hintLetterCost = 300;
+const hintShuffleCost = 100;
 
 
 
@@ -36,8 +37,6 @@ const hintCost = 300;
 
 function save()
 {
-  let jsonArr = JSON.stringify(arr);
-  localStorage.setItem("arr", jsonArr);
   jsonArr = JSON.stringify(realColors);
   localStorage.setItem("realColors", jsonArr);
   jsonArr = JSON.stringify(nameColors);
@@ -48,21 +47,16 @@ function save()
   localStorage.setItem("hintContainer", jsonArr);
   localStorage.setItem("points", points);
   localStorage.setItem("level", level);
+  localStorage.setItem("hints", hints);
 }
 
 function load()
 {
-  let str = localStorage.getItem("arr");
-  let parsedArr = JSON.parse(str);
-  arr = parsedArr;
   
-  str = localStorage.getItem("realColors");
-  console.log(realColors);
-  parsedArr = JSON.parse(str);
-  console.log(parsedArr);
+  let str = localStorage.getItem("realColors");
+  let parsedArr = JSON.parse(str);
   realColors = parsedArr;
-  console.log(realColors);
-
+ 
   str = localStorage.getItem("nameColors");
   parsedArr = JSON.parse(str);
   nameColors = parsedArr;
@@ -79,6 +73,9 @@ function load()
   level = str;
 
   str = Number(localStorage.getItem("points"));
+  points = str;
+
+  str = Number(localStorage.getItem("hints"));
   points = str;
 
   refreshUI();
@@ -118,6 +115,11 @@ function init()
   {
     save();
   }
+  if(hints == 0 && level == 0)
+  {
+    initialHint();
+  }
+  
 }
 
 function letterSelectedmax()
@@ -188,7 +190,6 @@ function randomizeString()
     let randomChar;
     for(var i = 0; i < nameColors.length; i++)
     {
-
       for(var j = nameColors[i].length; j < 12; j++)
       {
           randomChar = Math.floor(Math.random() * 26) + 97;
@@ -353,7 +354,7 @@ function showLettersHint()
   else
   {
     alert("Il nome del colore è già stato rivelato, per questo livello non può più essere usato questo hint!");
-    points += hintCost;
+    points += hintLetterCost;
   }
   showPoints();
 }
@@ -411,23 +412,29 @@ function resetVariables()
   resetHints();
 }
 
-function hintButton()
+function hintLetterButton()
 {
-  if(confirm("Vuoi vedere una lettera del colore che devi indovinare? Sono " + hintCost + " punti!"))
+  if(confirm("Vuoi vedere una lettera del colore che devi indovinare? Sono " + hintLetterCost + " Punti!"))
   {
-    if(points >= hintCost)
+    if(points >= hintLetterCost)
     {
-      hintContainer.push(realColors[level][hints]);
-      points -= hintCost;
-      showLettersHint();
-      hints++;
-      save();
+      points -= hintLetterCost;
+      initialHint();
     }
     else
     {
-      alert("non hai i punti!");
+      alert("non hai i Punti!");
     }
   }
+}
+
+function initialHint(bool)
+{
+  hintContainer = [];
+  hintContainer.push(realColors[level][hints]);
+  showLettersHint();
+  hints++;
+  save();
 }
 
 function resetHints()
@@ -462,4 +469,22 @@ function resetSave()
     localStorage.clear();
     window.location.reload(true);
   }
+}
+
+function hintShuffle()
+{
+  if(confirm("Per " + hintShuffleCost + " Punti puoi scombinare le lettere. Vuoi farlo?"))
+  {
+    if(points >= hintShuffleCost)
+    {
+      points -= hintShuffleCost;
+      nameColors[level] = shuffle(nameColors[level]);
+      refreshUI();
+    }
+    else
+    {
+      alert("Non hai i punti!");
+    }
+  }
+  
 }
