@@ -117,6 +117,7 @@ function init()
   }
   if(hints == 0 && level == 0)
   {
+    hintContainer = [];
     initialHint();
   }
   
@@ -339,6 +340,7 @@ function showLetters()
 
 function showLettersHint()
 {
+  
   let cur_hintLetters = document.querySelector('#hintSelected');
   let hintLetter = "";
   
@@ -430,7 +432,6 @@ function hintLetterButton()
 
 function initialHint(bool)
 {
-  hintContainer = [];
   hintContainer.push(realColors[level][hints]);
   showLettersHint();
   hints++;
