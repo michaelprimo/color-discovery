@@ -76,7 +76,7 @@ function load()
   points = str;
 
   str = Number(localStorage.getItem("hints"));
-  points = str;
+  hints = str;
 
   refreshUI();
 }
