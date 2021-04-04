@@ -497,7 +497,7 @@ function hintShuffle()
   
 }
 
-
+/*
 
 let givenStr = "celeste";
     
@@ -519,25 +519,9 @@ let givenStr = "celeste";
         console.log(ch[j]);
       }
     }
-    shuffleResult =  [...new Set(shuffleLetters)];
-    console.log(shuffleResult);
+    
     console.log(`Total occurrence : ${count}`);
 
-    let chars = ['A', 'B', 'A', 'C', 'B'];
-    let uniqueChars = [...new Set(chars)];
-
-console.log(uniqueChars);
-
-let chars = ['A', 'B', 'A', 'C', 'B'];
-
-let uniqueChars = [];
-chars.forEach((c) => {
-    if (!uniqueChars.includes(c)) {
-        uniqueChars.push(c);
-    }
-});
-
-console.log(uniqueChars);
 let str = 'AppDividend';
 console.log('Original String: ', str);
 
@@ -573,3 +557,4 @@ function myFunction() {
   var res = testArray[0].replace(/[^c|e|l|s|t]/gi, '');
   document.getElementById("demo").innerHTML = res;
 }
+*/
