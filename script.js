@@ -555,21 +555,3 @@ console.log('After removing the first character:', newStr);
 
 let gnosia = ['loy'];
 str = ['HellocyAdele','ciao'];
-
-newStr = str[0].replace('lo', '');
-
-console.log('Original String: ', str[0]);
-console.log('After character removed: ', newStr);
-str[0] = newStr;
-console.log(newStr);
-
-str = "abc's test#s";
-console.log(str.replace(/[^a-zA-Z ]/g, ""));
-
-var testArray = ["restfehclaeq", "babblabilcads"];
-function myFunction() {
-  var str = document.getElementById("demo").innerHTML; 
-  //var res = str.replace(/c|e|l|s|t|/gi, "");
-  var res = testArray[0].replace(/[^c|e|l|s|t]/gi, '');
-  document.getElementById("demo").innerHTML = res;
-}
