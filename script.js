@@ -480,31 +480,36 @@ function resetSave()
 
 function hintShuffle()
 {
+  /*
   if(confirm("Per " + hintShuffleCost + " Punti puoi scombinare le lettere. Vuoi farlo?"))
   {
     if(points >= hintShuffleCost)
     {
+      
       points -= hintShuffleCost;
       hintsUsedShuffle++;
+      */
       nameColors[level] = shuffle(nameColors[level]);
       refreshUI();
+      /*
     }
     else
     {
       alert("Non hai i punti!");
     }
   }
-  
+  */
 }
 
 function hintDeleteLetters()
 {
+  /*
   if(confirm("Per " + hintShuffleCost*10 + " Punti puoi scombinare le lettere. Vuoi farlo?"))
   {
     if(points >= hintShuffleCost*10)
     {
       points -= hintShuffleCost*10;
-      hintsUsedShuffle++;
+      hintsUsedShuffle++;*/
       nameColors[level] = shuffle(realColors[level]);
       refreshUI();
       if(nameColors[level] == realColors[level])
@@ -512,10 +517,12 @@ function hintDeleteLetters()
         nameColors[level] = shuffle(realColors[level]);
         refreshUI();
       }
+      /*
     }
     else
     {
       alert("Non hai i punti!");
     }
   }
+  */
 }
