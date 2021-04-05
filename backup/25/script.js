@@ -32,9 +32,9 @@ let hintContainer = [];
 const hintLetterCost = 100;
 const hintShuffleCost = 50;
 
-let stars = 3;
-let totalStars = 0;
-let starShards = 0;
+
+
+
 
 
 function save()
@@ -50,9 +50,6 @@ function save()
   localStorage.setItem("points", points);
   localStorage.setItem("level", level);
   localStorage.setItem("hintsUsedLetter", hintsUsedLetter);
-  localStorage.setItem("stars", stars);
-  localStorage.setItem("totalStars", totalStars);
-  localStorage.setItem("starShards", starShards);
 }
 
 function load()
@@ -83,15 +80,6 @@ function load()
   str = Number(localStorage.getItem("hintsUsedLetter"));
   hintsUsedLetter = str;
 
-  str = Number(localStorage.getItem("stars"));
-  stars = str;
-
-  str = Number(localStorage.getItem("totalStars"));
-  totalStars = str;
-
-  str = Number(localStorage.getItem("starShards"));
-  starShards = str;
-
   refreshUI();
 }
 
@@ -109,7 +97,7 @@ alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare l
 //the function allow the game to start and initialize.
 function init()
 {
-  stars = 3;
+  
   show_togglecolor();
   resetVariables();
  
@@ -128,6 +116,11 @@ function init()
   else
   {
     save();
+  }
+  if(hintsUsedLetter == 0 && level == 0)
+  {
+    hintContainer = [];
+    initialHint();
   }
   
 }
@@ -158,15 +151,6 @@ function showPoints()
   UI_points.innerHTML = 'Punti ' + points + "";
 }
 
-//show the current points obtained on the UI
-function showStars()
-{
-  // store the DOM element with the class #UI_points on the UI_points variable.
-  let UI_points = document.querySelector("#UI_stars");
-  // refresh the UI.
-  UI_points.innerHTML = 'Stelle ' + stars + "";
-}
-
 // calculate the points earned of the level for giving it to the player. Call only at the end of the level and before switching to the next.
 function givePoints()
 {
@@ -178,13 +162,6 @@ function givePoints()
   points += pointsObtained;
   //refresh the UI with the extra added points.
   showPoints();
-}
-
-function giveStars()
-{
-  totalStars += stars;
-  stars = 3;
-  showStars();
 }
 
 function show_togglecolor()
@@ -383,14 +360,14 @@ function showLettersHint()
     alert("Il nome del colore è già stato rivelato, per questo livello non può più essere usato questo hint!");
     points += hintLetterCost;
   }
-  showStars();
+  showPoints();
 }
 
 function check_gameover()
 {
   if(level >= maxLevel)
   {
-    alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Stelle Totali: " + totalStars + "/" + 3 * maxLevel + "!");
+    alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Punteggio: " + points + "!");
     window.location.reload(true);
   }
   console.log("Level: " + level + " realColors.length: " + realColors.length);
@@ -399,7 +376,7 @@ function check_gameover()
 function winningConditions(curLetters, stringLetter)
 {
     
-    giveStars();
+    givePoints();
     level++;
     giveLetters(nameColors);
     showColor();
@@ -412,7 +389,6 @@ function winningConditions(curLetters, stringLetter)
 
 function skipLevel()
 {
-  /*
   //store the string of the result of the level for calculate the result in points.
   let levelLetters = realColors[level];
   //calculate the result based on the letters of the level result multiplying it with the const containing the amount of points per letter.
@@ -421,8 +397,9 @@ function skipLevel()
   let skipPoints = Math.round((pointsObtained / 100) * 9);
   if(confirm("Stai per saltare questo livello per ottenere " + skipPoints + " punti. Sei sicuro di questa scelta?"))
   {
-    */
+    
     level++;
+    points += skipPoints;
     showLevel();
     giveLetters(nameColors);
     showColor();
@@ -430,7 +407,7 @@ function skipLevel()
     resetHints();
     check_gameover();
     save();
-  //}
+  }
 }
 
 function resetVariables()
@@ -438,7 +415,7 @@ function resetVariables()
   level = 0;
   showLevel();
   points = 0;
-  showStars();
+  showPoints();
   resetHints();
 }
 
@@ -458,7 +435,7 @@ function hintLetterButton()
   }
 }
 
-function initialHint()
+function initialHint(bool)
 {
   hintContainer.push(realColors[level][hintsUsedLetter]);
   showLettersHint();
@@ -468,8 +445,8 @@ function initialHint()
 
 function resetHints()
 {
-  stars = 3;
   hintsUsedLetter = 0;
+  hintsUsedShuffle = 0;
   hintContainer = [];
   showLettersHint();
 }
@@ -479,7 +456,7 @@ function refreshUI()
  // refresh the level UI.
  showLevel();
  // refresh the points UI.
- showStars();
+ showPoints();
 // give the starting color to discovery to the main color button.
  showColor();
  // give the letters to every button without letters on the board or refresh it.
@@ -540,7 +517,6 @@ function hintDeleteLetters()
         nameColors[level] = shuffle(realColors[level]);
         refreshUI();
       }
-      save();
       /*
     }
     else
@@ -549,38 +525,4 @@ function hintDeleteLetters()
     }
   }
   */
-}
-
-function hintManager()
-{
-  if(stars == 3)
-  {
-    if(confirm("Usando questo indizio vedrai la prima lettera del nome del colore a costo di una stella. Vuoi continuare?"))
-    {
-      stars--;
-      initialHint();
-    }
-    
-  }
-  else if(stars == 2)
-  {
-    if(confirm("Usando questo indizio vedrai rimosse le lettere non incluse del nome del colore a costo di una stella. Vuoi continuare?"))
-    {
-      stars--;
-      hintDeleteLetters();
-    }
-    
-  }
-  else if(stars == 1)
-  {
-    if(confirm("Usando questo indizio potrai saltare questo livello a costo di una stella. Vuoi continuare?"))
-    {
-      stars--;
-      skipLevel();
-    }
-  }
-  else
-  {
-    alert("Non hai abbastanza stelle per usare gli indizi!");
-  }
 }

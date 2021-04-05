@@ -390,7 +390,7 @@ function check_gameover()
 {
   if(level >= maxLevel)
   {
-    alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Stelle Totali: " + totalStars + "/" + 3 * maxLevel + "!");
+    alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Punteggio: " + points + "!");
     window.location.reload(true);
   }
   console.log("Level: " + level + " realColors.length: " + realColors.length);
@@ -468,8 +468,8 @@ function initialHint()
 
 function resetHints()
 {
-  stars = 3;
   hintsUsedLetter = 0;
+  hintsUsedShuffle = 0;
   hintContainer = [];
   showLettersHint();
 }
@@ -540,7 +540,6 @@ function hintDeleteLetters()
         nameColors[level] = shuffle(realColors[level]);
         refreshUI();
       }
-      save();
       /*
     }
     else
@@ -560,27 +559,21 @@ function hintManager()
       stars--;
       initialHint();
     }
-    
   }
-  else if(stars == 2)
+  if(stars == 2)
   {
     if(confirm("Usando questo indizio vedrai rimosse le lettere non incluse del nome del colore a costo di una stella. Vuoi continuare?"))
     {
       stars--;
       hintDeleteLetters();
     }
-    
   }
-  else if(stars == 1)
+  if(stars == 1)
   {
     if(confirm("Usando questo indizio potrai saltare questo livello a costo di una stella. Vuoi continuare?"))
     {
       stars--;
       skipLevel();
     }
-  }
-  else
-  {
-    alert("Non hai abbastanza stelle per usare gli indizi!");
   }
 }
