@@ -499,11 +499,11 @@ function hintShuffle()
 
 function hintDeleteLetters()
 {
-  if(confirm("Per " + hintShuffleCost + " Punti puoi scombinare le lettere. Vuoi farlo?"))
+  if(confirm("Per " + hintShuffleCost*10 + " Punti puoi scombinare le lettere. Vuoi farlo?"))
   {
-    if(points >= hintShuffleCost)
+    if(points >= hintShuffleCost*10)
     {
-      points -= hintShuffleCost;
+      points -= hintShuffleCost*10;
       hintsUsedShuffle++;
       nameColors[level] = shuffle(realColors[level]);
       refreshUI();
