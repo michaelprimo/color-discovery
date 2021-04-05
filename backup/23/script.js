@@ -497,25 +497,54 @@ function hintShuffle()
   
 }
 
-function hintDeleteLetters()
-{
-  if(confirm("Per " + hintShuffleCost + " Punti puoi scombinare le lettere. Vuoi farlo?"))
-  {
-    if(points >= hintShuffleCost)
+
+
+let givenStr = "celeste";
+    
+    let ch = ['a','b','c','d','e','f','g','h','i','l','m','n','o','p','q','r','s','t','u','v','z','w','x','k','y','j'];
+    let shuffleLetters = [];
+    
+    for(let i = 0; i < givenStr.length; i++)
     {
-      points -= hintShuffleCost;
-      hintsUsedShuffle++;
-      nameColors[level] = shuffle(realColors[level]);
-      refreshUI();
-      if(nameColors[level] == realColors[level])
+      for(let j = 0; j < ch.length; j++)
       {
-        nameColors[level] = shuffle(realColors[level]);
-        refreshUI();
+        if(givenStr.charAt(i) == ch[j])
+        {
+        console.log("Trovato: " + ch[j]);
+        shuffleLetters.push(ch[j]);
+        }
       }
     }
-    else
+    shuffleResult =  [...new Set(shuffleLetters)];
+    console.log(shuffleResult);
+
+var testArray = ["restfehclaeq", "babblabilcads"];
+let stringReplace = "";
+/*
+  var re = new RegExp(shuffleResult.join("|"), "gi");
+  console.log(re);
+*/
+
+//shuffleResult = new RegExp
+
+for(let i = 0; i < ch.length; i++)
+{
+  for(let j = 0; j < shuffleResult.length; j++)
+  {
+    if(!ch[i].includes(shuffleResult[j]) && !ch[i].includes(stringReplace[i]))
     {
-      alert("Non hai i punti!");
+      alert("ch[i]: ", ch[i]);
+      stringReplace += ch[i];
+      stringReplace += "|";
+      console.log(stringReplace);
     }
   }
 }
+
+stringReplace = new RegExp(stringReplace, "gi");
+//var res = str.replace(/c|e|l|s|t|/gi, "");
+res = testArray[0].replace(stringReplace, '');
+console.log(res);
+res = testArray[1].replace(/[^c|e|l|s|t]/gi, '');
+console.log(res);
+
