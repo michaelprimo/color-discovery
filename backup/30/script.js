@@ -516,7 +516,6 @@ function hintShuffle()
 
 function hintDeleteLetters()
 {
-  resetButton();
   nameColors[level] = shuffle(realColors[level]);
   refreshUI();
   if(nameColors[level] == realColors[level])

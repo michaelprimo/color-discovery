@@ -13,11 +13,9 @@ let arr = ["1", "2", "3", "4", "5"];
 //list of the real names of the colors.
 let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','denim','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento','fiamma','scuolabus','savoia','fiordaliso','acqua','alice','bondi','cadetto','capri','cielo','dodger','klein','colomba','menta','notte','oltremare','cenere','ottone','oliva','mountbatten','shocking','cardinale','fragola','mattone','pompeiano','tiziano','veneziano','violaceo','fuoco','pomodoro','caraibi','foresta','primavera','smeraldo','veronese','fantasma','floreale','fumo','navajo','polvere','napoli','segnale','topo','muschio','pino','ufficio','violetto'];
 //list of the edited names of the colors.
-let nameColors  = [...realColors];
+let nameColors  = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','denim','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento','fiamma','scuolabus','savoia','fiordaliso','acqua','alice','bondi','cadetto','capri','cielo','dodger','klein','colomba','menta','notte','oltremare','cenere','ottone','oliva','mountbatten','shocking','cardinale','fragola','mattone','pompeiano','tiziano','veneziano','violaceo','fuoco','pomodoro','caraibi','foresta','primavera','smeraldo','veronese','fantasma','floreale','fumo','navajo','polvere','napoli','segnale','topo','muschio','pino','ufficio','violetto'];
 //list of the real colors to put on the center, to the #color div.
 let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85','#ff8c69','#ed7465','#ff7f50','#d3305d','#de3163','#ff0000','#800000','#e5e4e2','#fff5ee','#f5deb3','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#293133','#1560bd','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#c9a0dc','#da70d6','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff','#993366','#e30b5c','#f400a1','#c0007f','#e52b50','#dc143c','#7b1b02','#ff2400','#ff4d00','#b20000','#960018','#92000a','#800020','#410012','#f4f0ec','#faf0e6','#ffefd5','#ffe4c4','#c3b091','#d2b48c','#d2b48c','#c2b280','#f0dc82','#3d2b1f','#ebb55f','#f4a460','#cd7f32','#704214','#cc7722','#daa520','#ffbf00','#ffcc00','#964b00','#fffdd0','#9ab973','#d1e231','#fde910','#7fff00','#ccff00','#ace1af','#87a96b','#93c572','#00a86b','#30d5c8','#007ba7','#708090','#5d8aa8','#0047ab','#ccccff','#d8bfd8','#df73ff','#dcdcdc','#c0c0c0','#ff9900','#FFD800','#6397d0','#abcdef','#256d7b','#f0f8ff','#0095b6','#5f9ea0','#00bfff','#2271b3','#1E90FF','#3A75C4','#606e8c','#98FF98','#343A90','#120A8F','#E4E5E0','#CC9966','#898437','#997A8D','#FC0FC0','#C41E3A','#CE3018','#B22222','#D21F1B','#ba6262','#C80815','#C71585','#A61022','#FF6347','#00CC99','#228b22','#00FF7F','#50C878','#40826D','#F8F8FF','#FFFAF0','#F5F5F5','#FFDEAD','#B0E0E6','#F7E89F','#E5BE01','#646B63','#ADDFAD','#01796F','#008000','#8000FF'];
-//this array contains the level of difficulty of the colour to discover.
-let difficultyColors = [2,1,1,3,2,3,3,2,3,2,3,2,1,1,1,3,3,2,1,1,2,2,1,2,2,1,1,1,1,1,1,2,2,4,2,1,1,2,1,1,2,2,1,1,1,2,1,1,1,1,2,1,1,4,2,2,2,2,2,1,4,3,4,1,4,3,2,4,4,3,4,4,3,4,4,2,1,1,3,4,1,2,1,2,4,2,1,4,2,4,3,3,2,2,4,4,4,4,4,4,4,4,1,2,4,4,4,2,3,4,4,4,3,4,3,3,1,3,4,3,3,1,4,2,4,2,2,3,4,3,2,2,2,3,3,4,1,4,2,3,2,4,4,4,4,2,2,3,4,2];
 //this array contains the letters of the players.
 let letterContainer = [];
 // this toggle allows the game to find any button if it's clicked or not.
@@ -407,7 +405,6 @@ function check_gameover()
       recordStars = totalStars;
       localStorage.setItem("recordStars", recordStars);
     }
-    totalStars = 0;
     localStorage.clear();
     init();
     window.location.reload(true);
@@ -516,7 +513,6 @@ function hintShuffle()
 
 function hintDeleteLetters()
 {
-  resetButton();
   nameColors[level] = shuffle(realColors[level]);
   refreshUI();
   if(nameColors[level] == realColors[level])
@@ -563,32 +559,29 @@ function hintManager()
 
 function giveRank()
 {
-  if(totalStars  > 0 && totalStars  <= 35)
-  {
-    return "F";
-  }
-  else if(totalStars > 35 && totalStars <= 50)
-  {
-    return "E";
-  }
-  else if(totalStars > 50 && totalStars <= 59)
-  {
-    return "D";
-  }
-  else if(totalStars > 59 && totalStars <= 75)
-  {
-    return "C";
-  }
-  else if(totalStars > 75 && totalStars <= 92)
-  {
-    return "B";
-  }
-  else if(totalStars > 92 && totalStars < 100)
-  {
-    return "A";
-  }
-  else
-  {
-    return "S";
+  switch (totalStars) {
+    case totalStars > 0 && totalStars <= 35:
+      return "F";
+     
+    case totalStars > 35 && totalStars <= 50:
+      return "E";
+     
+    case totalStars > 50 && totalStars <= 59:
+      return "D";
+     
+    case totalStars > 59 && totalStars <= 75:
+      return "C";
+     
+    case totalStars > 75 && totalStars <= 92:
+      return "B";
+     
+    case totalStars > 92 && totalStars < 100:
+      return "A";
+     
+    case totalStars >= 100:
+      return "S";
+     
+    default:
+      return "F";
   }
 }
