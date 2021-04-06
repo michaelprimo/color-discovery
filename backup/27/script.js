@@ -183,15 +183,7 @@ function givePoints()
 function giveStars()
 {
   totalStars += stars;
-  if(level >= maxLevel-10 && level <= maxLevel)
-  {
-    stars = 4;
-  }
-  else
-  {
-    stars = 3;
-  }
-  
+  stars = 3;
   showStars();
 }
 
@@ -398,14 +390,15 @@ function check_gameover()
 {
   if(level >= maxLevel)
   {
-    alert("Ce l'hai fatta! Adesso i colori e le lettere cambieranno di posizione! Stelle Totali: " + totalStars + "/100!");
-    localStorage.clear();
+    alert("Ce l'hai fatta! Adesso i colori e le lettere verranno rimescolate! Stelle Totali: " + totalStars + "/" + 3 * maxLevel + "!");
     window.location.reload(true);
   }
+  console.log("Level: " + level + " realColors.length: " + realColors.length);
 }
 
 function winningConditions(curLetters, stringLetter)
 {
+    
     giveStars();
     level++;
     giveLetters(nameColors);
@@ -419,6 +412,16 @@ function winningConditions(curLetters, stringLetter)
 
 function skipLevel()
 {
+  /*
+  //store the string of the result of the level for calculate the result in points.
+  let levelLetters = realColors[level];
+  //calculate the result based on the letters of the level result multiplying it with the const containing the amount of points per letter.
+  let pointsObtained = levelLetters.length * pointsPerLetter;
+
+  let skipPoints = Math.round((pointsObtained / 100) * 9);
+  if(confirm("Stai per saltare questo livello per ottenere " + skipPoints + " punti. Sei sicuro di questa scelta?"))
+  {
+    */
     level++;
     showLevel();
     giveLetters(nameColors);
@@ -426,8 +429,8 @@ function skipLevel()
     resetButton();
     resetHints();
     check_gameover();
-    giveStars();
     save();
+  //}
 }
 
 function resetVariables()
@@ -437,6 +440,7 @@ function resetVariables()
   points = 0;
   showStars();
   resetHints();
+  stars = 3;
 }
 
 function hintLetterButton()
@@ -465,6 +469,7 @@ function initialHint()
 
 function resetHints()
 {
+  stars = 3;
   hintsUsedLetter = 0;
   hintContainer = [];
   showLettersHint();
@@ -499,28 +504,59 @@ function resetSave()
 
 function hintShuffle()
 {
-  resetButton();
-  nameColors[level] = shuffle(nameColors[level]);
-  refreshUI();
+  /*
+  if(confirm("Per " + hintShuffleCost + " Punti puoi scombinare le lettere. Vuoi farlo?"))
+  {
+    if(points >= hintShuffleCost)
+    {
+      
+      points -= hintShuffleCost;
+      hintsUsedShuffle++;
+      */
+      nameColors[level] = shuffle(nameColors[level]);
+      refreshUI();
+      /*
+    }
+    else
+    {
+      alert("Non hai i punti!");
+    }
+  }
+  */
 }
 
 function hintDeleteLetters()
 {
-  nameColors[level] = shuffle(realColors[level]);
-  refreshUI();
-  if(nameColors[level] == realColors[level])
+  /*
+  if(confirm("Per " + hintShuffleCost*10 + " Punti puoi scombinare le lettere. Vuoi farlo?"))
   {
-    nameColors[level] = shuffle(realColors[level]);
-    refreshUI();
+    if(points >= hintShuffleCost*10)
+    {
+      points -= hintShuffleCost*10;
+      hintsUsedShuffle++;*/
+      nameColors[level] = shuffle(realColors[level]);
+      refreshUI();
+      if(nameColors[level] == realColors[level])
+      {
+        nameColors[level] = shuffle(realColors[level]);
+        refreshUI();
+      }
+      save();
+      /*
+    }
+    else
+    {
+      alert("Non hai i punti!");
+    }
   }
-  save();
+  */
 }
 
 function hintManager()
 {
-  if(stars >= 3)
+  if(stars == 3)
   {
-    if(confirm("Usando questo indizio vedrai una lettera del nome del colore a costo di una stella. Vuoi continuare?"))
+    if(confirm("Usando questo indizio vedrai la prima lettera del nome del colore a costo di una stella. Vuoi continuare?"))
     {
       stars--;
       initialHint();
