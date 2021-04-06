@@ -183,7 +183,7 @@ function givePoints()
 function giveStars()
 {
   totalStars += stars;
-  if(level >= maxLevel-10 && level <= maxLevel)
+  if(level >= maxLevel-11 && level <= maxLevel)
   {
     stars = 4;
   }
