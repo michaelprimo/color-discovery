@@ -456,7 +456,7 @@ function showLettersHint()
 
 function check_gameover()
 {
-  if(level >= maxLevel-1)
+  if(level >= maxLevel)
   {
     let rank = giveRank();
     alert("Ce l'hai fatta! Adesso i colori e le lettere cambieranno di posizione! Stelle Totali: " + totalStars + "/" + ((easy_levels_stars * easy_levels) + (normal_levels_stars * normal_levels) + (hard_levels_stars * hard_levels))  + "! Il tuo grado è: " + rank + "!");
@@ -474,7 +474,7 @@ function check_gameover()
 
 function winningConditions(curLetters, stringLetter)
 {
-  if(level >= maxLevel-1)
+  if(level >= maxLevel)
   {
     check_gameover();
   }
@@ -494,7 +494,7 @@ function winningConditions(curLetters, stringLetter)
 
 function skipLevel()
 {
-  if(level >= maxLevel-1)
+  if(level >= maxLevel)
   {
     check_gameover();
   }
