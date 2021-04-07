@@ -11,25 +11,13 @@ const pointsPerLetter = 100;
 let arr = ["1", "2", "3", "4", "5"];
 
 //list of the real names of the colors.
-let realColors = [];
-
-let easy_realColors = ['lavanda','magenta','rosa','salmone','ciliegia','rosso','bordeaux','platino','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','celeste','azzurro','magnolia','blu','lilla','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','lampone','fucsia','porpora','rubino','seppia','marrone','crema','pera','limone','lime','giada','turchese','argento'];
-let normal_realColors = ['melanzana','tronco','castagno','anguria','aragosta','corallo','azalea','conchiglia','grano','glicine','orchidea','malva','cremisi','granata','scarlatto','vermiglio','isabella','camoscio','sabbia','bronzo','ambra','mandarino','asparago','pistacchio','fiamma','fiordaliso','acqua','alice','bondi','cadetto','capri','cielo','klein','colomba','menta','notte','cenere','ottone','oliva','fragola','mattone','violaceo','fuoco','pomodoro','foresta','smeraldo','topo','muschio','pino','violetto'];
-let hard_realColors = ['antracite','denim','vinaccia','amaranto','carminio','sangria','borgogna','lino','papaya','biscotto','kaki','catrame','tan','ecru','bistro','fulvo','ocra','solidago','olivina','chartreuse','celadon','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','scuolabus','savoia','dodger','oltremare','mountbatten','shocking','cardinale','pompeiano','tiziano','veneziano','caraibi','primavera','veronese','fantasma','floreale','fumo','navajo','polvere','napoli','segnale','ufficio'];
+let realColors = ['lavanda','magenta','rosa','melanzana','tronco','castagno','anguria','salmone','aragosta','corallo','azalea','ciliegia','rosso','bordeaux','platino','conchiglia','grano','pesca','arancione','oro','mogano','avorio','beige','albicocca','carbone','rame','zafferano','cioccolato','limone','giallo','verde','acquamarina','giada','antracite','denim','celeste','azzurro','magnolia','blu','lilla','glicine','orchidea','ametista','viola','indaco','prugna','bianco','grigio','nero','ciano','malva','lampone','fucsia','vinaccia','amaranto','cremisi','granata','scarlatto','vermiglio','porpora','carminio','sangria','borgogna','rubino','isabella','lino','papaya','biscotto','kaki','catrame','tan','ecru','camoscio','bistro','fulvo','sabbia','bronzo','seppia','ocra','solidago','ambra','mandarino','marrone','crema','olivina','pera','limone','chartreuse','lime','celadon','asparago','pistacchio','giada','turchese','ceruleo','ardesia','avio','cobalto','pervinca','cardo','eliotropo','gainsboro','argento','fiamma','scuolabus','savoia','fiordaliso','acqua','alice','bondi','cadetto','capri','cielo','dodger','klein','colomba','menta','notte','oltremare','cenere','ottone','oliva','mountbatten','shocking','cardinale','fragola','mattone','pompeiano','tiziano','veneziano','violaceo','fuoco','pomodoro','caraibi','foresta','primavera','smeraldo','veronese','fantasma','floreale','fumo','navajo','polvere','napoli','segnale','topo','muschio','pino','ufficio','violetto'];
 //list of the edited names of the colors.
-let nameColors  = [];
-
-let easy_nameColors  = [...easy_realColors];
-let normal_nameColors  = [...normal_realColors];
-let hard_nameColors  = [...hard_realColors];
+let nameColors  = [...realColors];
 //list of the real colors to put on the center, to the #color div.
-let levelColors  = [];
-
-let easy_levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#ff8c69','#de3163','#ff0000','#800000','#e5e4e2','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff','#e30b5c','#f400a1','#b20000','#410012','#704214','#964b00','#fffdd0','#d1e231','#fde910','#ccff00','#00a86b','#30d5c8','#c0c0c0'];
-let normal_levelColors = ['#990066','#79443b','#cd5c5c','#fc6c85','#ed7465','#ff7f50','#d3305d','#fff5ee','#f5deb3','#c9a0dc','#da70d6','#993366','#dc143c','#7b1b02','#ff2400','#ff4d00','#F4F0EC','#f0dc82','#f4a460','#cd7f32','#ffbf00','#ffcc00','#87a96b','#93c572','#ff9900','#abcdef','#256d7b','#f0f8ff','#0095b6','#5f9ea0','#00bfff','#2271b3','#3A75C4','#606e8c','#98FF98','#343A90','#E4E5E0','#CC9966','#898437','#CE3018','#B22222','#C71585','#A61022','#FF6347','#228b22','#50C878','#646B63','#ADDFAD','#01796F','#8000FF'];
-let hard_levelColors = ['#293133','#1560bd','#c0007f','#e52b50','#960018','#92000a','#800020','#f4f0ec','#faf0e6','#ffefd5','#ffe4c4','#c3b091','#d2b48c','#c2b280','#3d2b1f','#ebb55f','#cc7722','#daa520','#9ab973','#7fff00','#ace1af','#007ba7','#708090','#5d8aa8','#0047ab','#ccccff','#d8bfd8','#df73ff','#dcdcdc','#FFD800','#6397d0','#1E90FF','#120A8F','#997A8D','#FC0FC0','#C41E3A','#D21F1B','#ba6262','#C80815','#00CC99','#00FF7F','#40826D','#F8F8FF','#FFFAF0','#F5F5F5','#FFDEAD','#B0E0E6','#F7E89F','#E5BE01','#008000'];
-
-
+let levelColors = ['#e6e6fa','#ff00ff','#ffc0cb','#990066','#79443b','#cd5c5c','#fc6c85','#ff8c69','#ed7465','#ff7f50','#d3305d','#de3163','#ff0000','#800000','#e5e4e2','#fff5ee','#f5deb3','#ffe5b4','#ffa500','#ffd700','#c04000','#fffff0','#f5f5dc','#fbceb1','#050402','#b87333','#f4c430','#d2691e','#fde910','#ffff00','#00ff00','#7fffd4','#00a86b','#293133','#1560bd','#99cbff','#007fff','#f8f4ff','#0000ff','#c8a2c8','#c9a0dc','#da70d6','#884da7','#8f00ff','#4b0082','#660066','#ffffff','#808080','#000000','#00ffff','#993366','#e30b5c','#f400a1','#c0007f','#e52b50','#dc143c','#7b1b02','#ff2400','#ff4d00','#b20000','#960018','#92000a','#800020','#410012','#f4f0ec','#faf0e6','#ffefd5','#ffe4c4','#c3b091','#d2b48c','#d2b48c','#c2b280','#f0dc82','#3d2b1f','#ebb55f','#f4a460','#cd7f32','#704214','#cc7722','#daa520','#ffbf00','#ffcc00','#964b00','#fffdd0','#9ab973','#d1e231','#fde910','#7fff00','#ccff00','#ace1af','#87a96b','#93c572','#00a86b','#30d5c8','#007ba7','#708090','#5d8aa8','#0047ab','#ccccff','#d8bfd8','#df73ff','#dcdcdc','#c0c0c0','#ff9900','#FFD800','#6397d0','#abcdef','#256d7b','#f0f8ff','#0095b6','#5f9ea0','#00bfff','#2271b3','#1E90FF','#3A75C4','#606e8c','#98FF98','#343A90','#120A8F','#E4E5E0','#CC9966','#898437','#997A8D','#FC0FC0','#C41E3A','#CE3018','#B22222','#D21F1B','#ba6262','#C80815','#C71585','#A61022','#FF6347','#00CC99','#228b22','#00FF7F','#50C878','#40826D','#F8F8FF','#FFFAF0','#F5F5F5','#FFDEAD','#B0E0E6','#F7E89F','#E5BE01','#646B63','#ADDFAD','#01796F','#008000','#8000FF'];
+//this array contains the level of difficulty of the colour to discover.
+let difficultyColors = [2,1,1,3,2,3,3,2,3,2,3,2,1,1,1,3,3,2,1,1,2,2,1,2,2,1,1,1,1,1,1,2,2,4,2,1,1,2,1,1,2,2,1,1,1,2,1,1,1,1,2,1,1,4,2,2,2,2,2,1,4,3,4,1,4,3,2,4,4,3,4,4,3,4,4,2,1,1,3,4,1,2,1,2,4,2,1,4,2,4,3,3,2,2,4,4,4,4,4,4,4,4,1,2,4,4,4,2,3,4,4,4,3,4,3,3,1,3,4,3,3,1,4,2,4,2,2,3,4,3,2,2,2,3,3,4,1,4,2,3,2,4,4,4,4,2,2,3,4,2];
 //this array contains the letters of the players.
 let letterContainer = [];
 // this toggle allows the game to find any button if it's clicked or not.
@@ -50,14 +38,6 @@ let stars = 3;
 let totalStars = 0;
 let recordStars = 0;
 
-const easy_levels = 10;
-const easy_levels_stars = 3;
-
-const normal_levels = 10;
-const normal_levels_stars = 4;
-
-const hard_levels = 10;
-const hard_levels_stars = 5;
 
 function save()
 {
@@ -131,18 +111,12 @@ alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare l
 //the function allow the game to start and initialize.
 function init()
 {
-  stars = easy_levels_stars;
-
-  // This allows to create a "seed" for every game and play.
-  shuffleArray(easy_nameColors, easy_levelColors, easy_realColors);
-  shuffleArray(normal_nameColors, normal_levelColors, normal_realColors);
-  shuffleArray(hard_nameColors, hard_levelColors, hard_realColors);
-  push_gameArray();
-  
+  stars = 3;
   show_togglecolor();
   resetVariables();
  
-  
+  // This allows to create a "seed" for every game and play.
+  shuffleArray(nameColors, levelColors, realColors);
   // Call the function which allows to randomize every string of nameColors.
   randomizeString();
   
@@ -158,34 +132,6 @@ function init()
     save();
   }
   
-}
-
-function push_gameArray()
-{
-  reset_gameArray();
-  for(let i = 0; i < easy_levels; i++)
-  {
-    realColors.push(easy_realColors[i]);
-    levelColors.push(easy_levelColors[i]);
-  }
-  for(let i = 0; i < normal_levels; i++)
-  {
-    realColors.push(normal_realColors[i]);
-    levelColors.push(normal_levelColors[i]);
-  }
-  for(let i = 0; i < hard_levels; i++)
-  {
-    realColors.push(hard_realColors[i]);
-    levelColors.push(hard_levelColors[i]);
-  }
-  nameColors = [...realColors];
-}
-
-function reset_gameArray()
-{
-  nameColors = [];
-  levelColors = [];
-  realColors = [];
 }
 
 function letterSelectedmax()
@@ -239,17 +185,13 @@ function givePoints()
 function giveStars()
 {
   totalStars += stars;
-  if(level >= easy_levels+normal_levels-1 && level <= maxLevel)
+  if(level >= maxLevel-11 && level <= maxLevel)
   {
-    stars = hard_levels_stars;
-  }
-  else if(level >= easy_levels-1 && level <= maxLevel-easy_levels+normal_levels-1)
-  {
-    stars = normal_levels_stars;
+    stars = 4;
   }
   else
   {
-    stars = easy_levels_stars;
+    stars = 3;
   }
   
   showStars();
@@ -456,10 +398,10 @@ function showLettersHint()
 
 function check_gameover()
 {
-  if(level >= maxLevel-1)
+  if(level >= maxLevel)
   {
     let rank = giveRank();
-    alert("Ce l'hai fatta! Adesso i colori e le lettere cambieranno di posizione! Stelle Totali: " + totalStars + "/" + ((easy_levels_stars * easy_levels) + (normal_levels_stars * normal_levels) + (hard_levels_stars * hard_levels))  + "! Il tuo grado è: " + rank + "!");
+    alert("Ce l'hai fatta! Adesso i colori e le lettere cambieranno di posizione! Stelle Totali: " + totalStars + "/100! Il tuo grado è: " + rank + "!");
     if(totalStars > recordStars)
     {
       recordStars = totalStars;
@@ -474,12 +416,6 @@ function check_gameover()
 
 function winningConditions(curLetters, stringLetter)
 {
-  if(level >= maxLevel-1)
-  {
-    check_gameover();
-  }
-  else
-  {
     giveStars();
     level++;
     giveLetters(nameColors);
@@ -489,17 +425,10 @@ function winningConditions(curLetters, stringLetter)
     resetHints();
     check_gameover();
     save();
-  }
 }
 
 function skipLevel()
 {
-  if(level >= maxLevel-1)
-  {
-    check_gameover();
-  }
-  else
-  {
     level++;
     showLevel();
     giveLetters(nameColors);
@@ -509,7 +438,6 @@ function skipLevel()
     check_gameover();
     giveStars();
     save();
-  }
 }
 
 function resetVariables()
@@ -635,27 +563,27 @@ function hintManager()
 
 function giveRank()
 {
-  if(totalStars  > 0 && totalStars  <= 45)
+  if(totalStars  > 0 && totalStars  <= 35)
   {
     return "F";
   }
-  else if(totalStars > 45 && totalStars <= 67)
+  else if(totalStars > 35 && totalStars <= 50)
   {
     return "E";
   }
-  else if(totalStars > 67 && totalStars <= 85)
+  else if(totalStars > 50 && totalStars <= 59)
   {
     return "D";
   }
-  else if(totalStars > 85 && totalStars <= 107)
+  else if(totalStars > 59 && totalStars <= 75)
   {
     return "C";
   }
-  else if(totalStars > 95 && totalStars <= 107)
+  else if(totalStars > 75 && totalStars <= 92)
   {
     return "B";
   }
-  else if(totalStars > 112 && totalStars < 120)
+  else if(totalStars > 92 && totalStars < 100)
   {
     return "A";
   }
