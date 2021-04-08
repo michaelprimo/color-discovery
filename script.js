@@ -35,7 +35,16 @@ let letterContainer = [];
 // this toggle allows the game to find any button if it's clicked or not.
 let toggle = createToggle();
 
-const maxLevel = 30;
+const easy_levels = 10;
+const easy_levels_stars = 3;
+
+const normal_levels = 10;
+const normal_levels_stars = 4;
+
+const hard_levels = 10;
+const hard_levels_stars = 5;
+
+const maxLevel = easy_levels + normal_levels + hard_levels;
 
 let hintsUsedLetter = 0;
 
@@ -49,15 +58,6 @@ const hintShuffleCost = 50;
 let stars = 3;
 let totalStars = 0;
 let recordStars = 0;
-
-const easy_levels = 10;
-const easy_levels_stars = 3;
-
-const normal_levels = 10;
-const normal_levels_stars = 4;
-
-const hard_levels = 10;
-const hard_levels_stars = 5;
 
 function save()
 {
@@ -239,11 +239,12 @@ function givePoints()
 function giveStars()
 {
   totalStars += stars;
+  console.log(stars);
   if(level >= easy_levels+normal_levels-1 && level <= maxLevel)
   {
     stars = hard_levels_stars;
   }
-  else if(level >= easy_levels-1 && level <= maxLevel-easy_levels+normal_levels-1)
+  else if(level >= easy_levels-1 && level <= maxLevel-easy_levels+normal_levels)
   {
     stars = normal_levels_stars;
   }
@@ -423,6 +424,7 @@ function showLetters()
   curLetters.innerHTML = stringLetter;
   if(letterContainer.length == realColors[level].length && stringLetter == realColors[level])
   {
+    
     winningConditions(curLetters, stringLetter);
   }
   else if(letterContainer.length == realColors[level].length && stringLetter != realColors[level])
@@ -456,7 +458,7 @@ function showLettersHint()
 
 function check_gameover()
 {
-  if(level >= maxLevel-1)
+  if(level+1 > maxLevel)
   {
     let rank = giveRank();
     alert("Ce l'hai fatta! Adesso i colori e le lettere cambieranno di posizione! Stelle Totali: " + totalStars + "/" + ((easy_levels_stars * easy_levels) + (normal_levels_stars * normal_levels) + (hard_levels_stars * hard_levels))  + "! Il tuo grado è: " + rank + "!");
@@ -474,14 +476,14 @@ function check_gameover()
 
 function winningConditions(curLetters, stringLetter)
 {
-  if(level >= maxLevel-1)
+  giveStars();
+  level++;
+  if(level+1 >= maxLevel)
   {
     check_gameover();
   }
   else
   {
-    giveStars();
-    level++;
     giveLetters(nameColors);
     showColor();
     showLevel();
@@ -494,20 +496,20 @@ function winningConditions(curLetters, stringLetter)
 
 function skipLevel()
 {
-  if(level >= maxLevel-1)
+  giveStars();
+  level++;
+  if(level >= maxLevel)
   {
     check_gameover();
   }
   else
   {
-    level++;
     showLevel();
     giveLetters(nameColors);
     showColor();
     resetButton();
     resetHints();
     check_gameover();
-    giveStars();
     save();
   }
 }
