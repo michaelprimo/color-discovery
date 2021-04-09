@@ -59,6 +59,14 @@ let stars = 3;
 let totalStars = 0;
 let recordStars = 0;
 
+const stars_needed_for_S = 120;
+const stars_needed_for_A = 110;
+const stars_needed_for_B = 100;
+const stars_needed_for_C = 90;
+const stars_needed_for_D = 80;
+const stars_needed_for_E = 70;
+const stars_needed_for_F = 60;
+
 function save()
 {
   jsonArr = JSON.stringify(realColors);
@@ -637,27 +645,27 @@ function hintManager()
 
 function giveRank()
 {
-  if(totalStars  > 0 && totalStars  <= 45)
+  if(totalStars >= 0 && totalStars  <= stars_needed_for_F)
   {
     return "F";
   }
-  else if(totalStars > 45 && totalStars <= 67)
+  else if(totalStars > stars_needed_for_F && totalStars <= stars_needed_for_E)
   {
     return "E";
   }
-  else if(totalStars > 67 && totalStars <= 85)
+  else if(totalStars > stars_needed_for_E && totalStars <= stars_needed_for_D)
   {
     return "D";
   }
-  else if(totalStars > 85 && totalStars <= 107)
+  else if(totalStars > stars_needed_for_D && totalStars <= stars_needed_for_C)
   {
     return "C";
   }
-  else if(totalStars > 95 && totalStars <= 107)
+  else if(totalStars > stars_needed_for_C && totalStars <= stars_needed_for_B)
   {
     return "B";
   }
-  else if(totalStars > 112 && totalStars < 120)
+  else if(totalStars > stars_needed_for_B && totalStars < stars_needed_for_A)
   {
     return "A";
   }
@@ -666,51 +674,42 @@ function giveRank()
     return "S";
   }
 }
-
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementsByClassName('modal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementsByClassName("myBtn");
+
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close");
+
+// Get the <span> element that closes the modal
+var clos = document.getElementsByClassName("btnClose");
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+btn[0].onclick = function() {
+    modal[0].style.display = "block";
 }
 
+btn[1].onclick = function() {
+    modal[1].style.display = "block";
+}
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span[0].onclick = function() {
+    modal[0].style.display = "none";
 }
 
+span[1].onclick = function() {
+    modal[1].style.display = "none";
+}
+
+clos[0].onclick = function() {
+  modal[1].style.display = "none";
+}
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-  if (event.target == modal2 ) {
-    modal2.style.display = "none";
-  }
-}
-
-// Get the modal
-var modal2 = document.getElementById("myModal2");
-
-// Get the button that opens the modal
-var btn2 = document.getElementById("myBtn2");
-
-// Get the <span> element that closes the modal
-var span2 = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span2.onclick = function() {
-  modal2.style.display = "none";
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
