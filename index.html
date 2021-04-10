@@ -33,18 +33,37 @@
         <div id="hintSelected"></div>
         
         <div id="UI_Row">
+            
             <button id="hardButton" onclick="hintManager()">Indizio</button>
             <button id="hardButton" onclick="hintShuffle()">Scombina</button>
             <button id="skipButton" onclick="resetSave()">Nuova partita</button>
             <button id="hardButton" onclick="resetButton()">Reset Lettere</button>
-            <!--
+            <!--debug <button id="hardButton" onclick="skipLevel()">Skip</button>
             <button class="myBtn">Open Modal</button>
             <button class="myBtn">Open Modal 2</button>
-            -->
+             -->
         </div>
     </div>
     
 
+    <!-- The Modal with the welcome message-->
+    <div id="myModal2" class="modal">
+    
+      <!-- Modal content with the welcome message-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">×</span>
+          <h2>Benvenuto in Color Discovery!</h2>
+        </div>
+        <div class="modal-body">
+          <p class="modal_message"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btnClose">Ok</button>
+        </div>
+      </div>
+    
+    </div>
     
     
     <!-- The Modal -->
@@ -69,26 +88,6 @@
     
    
     
-    <!-- The Modal -->
-    <div id="myModal2" class="modal">
-    
-      <!-- Modal content -->
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">×</span>
-          <h2>Modal Header</h2>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...EXPERIMENTS!!!</p>
-        </div>
-        <div class="modal-footer">
-          <button class="btnClose">Ok</button>
-          <h3>Modal Footer</h3>
-        </div>
-      </div>
-    
-    </div>
     
 
     <script src="script.js"></script>

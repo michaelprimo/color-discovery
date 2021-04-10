@@ -67,6 +67,10 @@ const stars_needed_for_D = 80;
 const stars_needed_for_E = 70;
 const stars_needed_for_F = 60;
 
+const phrases = [
+  "Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i " + maxLevel + " livelli?"
+];
+
 function save()
 {
   jsonArr = JSON.stringify(realColors);
@@ -133,8 +137,6 @@ function load()
 giveLettersClick();
 //call every function that initialize the game.
 init();
-
-alert("Benvenuto in Color Discovery! Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i " + maxLevel + " livelli?")
 
 //the function allow the game to start and initialize.
 function init()
@@ -486,7 +488,7 @@ function winningConditions(curLetters, stringLetter)
 {
   giveStars();
   level++;
-  if(level+1 >= maxLevel)
+  if(level >= maxLevel)
   {
     check_gameover();
   }
@@ -674,18 +676,22 @@ function giveRank()
     return "S";
   }
 }
+/* modal in progress
 // Get the modal
 var modal = document.getElementsByClassName('modal');
 
 // Get the button that opens the modal
 var btn = document.getElementsByClassName("myBtn");
 
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close");
 
 // Get the <span> element that closes the modal
-var clos = document.getElementsByClassName("btnClose");
+var btnClose = document.getElementsByClassName("btnClose");
+
+let welcomeModal = document.getElementById("myModal2");
+
+welcomeModal.innerHTML = phrases[0];
 
 // When the user clicks the button, open the modal 
 btn[0].onclick = function() {
@@ -704,7 +710,7 @@ span[1].onclick = function() {
     modal[1].style.display = "none";
 }
 
-clos[0].onclick = function() {
+btnClose[0].onclick = function() {
   modal[1].style.display = "none";
 }
 // When the user clicks anywhere outside of the modal, close it
@@ -713,3 +719,9 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+window.onload = function(event) 
+{
+  modal[1].style.display = "block";
+}
+*/
