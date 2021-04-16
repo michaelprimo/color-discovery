@@ -2,13 +2,6 @@
 
 //set the actual level of the game.
 let level = 0;
-//set the points you have earned.
-let points = 0;
-//this const decide of much points give to the player for every color finded. 
-const pointsPerLetter = 100;
-
-
-let arr = ["1", "2", "3", "4", "5"];
 
 //list of the real names of the colors.
 let realColors = [];
@@ -59,13 +52,15 @@ let stars = 3;
 let totalStars = 0;
 let recordStars = 0;
 
-const stars_needed_for_S = 120;
-const stars_needed_for_A = 110;
-const stars_needed_for_B = 100;
-const stars_needed_for_C = 90;
-const stars_needed_for_D = 80;
-const stars_needed_for_E = 70;
-const stars_needed_for_F = 60;
+let maxStars = (easy_levels * easy_levels_stars) + (normal_levels * normal_levels_stars) + (hard_levels * hard_levels_stars);
+
+const stars_needed_for_S = maxStars;
+const stars_needed_for_A = maxStars * 0.9;
+const stars_needed_for_B = maxStars * 0.8;
+const stars_needed_for_C = maxStars * 0.7;
+const stars_needed_for_D = maxStars * 0.6;
+const stars_needed_for_E = maxStars * 0.5;
+const stars_needed_for_F = maxStars * 0.4;
 
 const phrases = [
   "Ci sono dei colori in centro e devi usare le lettere attorno per scrivere il nome di quel colore. Riuscirai a terminare tutti i " + maxLevel + " livelli?"
@@ -81,7 +76,6 @@ function save()
   localStorage.setItem("levelColors", jsonArr);
   jsonArr = JSON.stringify(hintContainer);
   localStorage.setItem("hintContainer", jsonArr);
-  localStorage.setItem("points", points);
   localStorage.setItem("level", level);
   localStorage.setItem("hintsUsedLetter", hintsUsedLetter);
   localStorage.setItem("stars", stars);
@@ -110,9 +104,6 @@ function load()
 
   str = Number(localStorage.getItem("level"));
   level = str;
-
-  str = Number(localStorage.getItem("points"));
-  points = str;
 
   str = Number(localStorage.getItem("hintsUsedLetter"));
   hintsUsedLetter = str;
@@ -216,40 +207,27 @@ function showLevel()
 }
 
 //show the current points obtained on the UI
-function showPoints()
-{
-  // store the DOM element with the class #UI_points on the UI_points variable.
-  let UI_points = document.querySelector("#UI_points");
-  // refresh the UI.
-  UI_points.innerHTML = 'Punti ' + points + "";
-}
-
-//show the current points obtained on the UI
 function showStars()
 {
   // store the DOM element with the class #UI_points on the UI_points variable.
-  let UI_points = document.querySelector("#UI_stars");
+  let UI_stars = document.querySelector("#UI_stars");
   // refresh the UI.
-  UI_points.innerHTML = 'Stelle ' + stars + "";
+  UI_stars.innerHTML = 'Stelle ' + stars + "";
+  show_totalStars();
 }
 
-// calculate the points earned of the level for giving it to the player. Call only at the end of the level and before switching to the next.
-function givePoints()
+//show the current stars obtained on the UI
+function show_totalStars()
 {
-  //store the string of the result of the level for calculate the result in points.
-  let levelLetters = realColors[level];
-  //calculate the result based on the letters of the level result multiplying it with the const containing the amount of points per letter.
-  let pointsObtained = levelLetters.length * pointsPerLetter;
-  // give the points calculated.
-  points += pointsObtained;
-  //refresh the UI with the extra added points.
-  showPoints();
+  // store the DOM element with the class #UI_totalstars on the UI_totalstars variable.
+  let UI_totalstars = document.querySelector("#UI_totalstars");
+  // refresh the UI.
+  UI_totalstars.innerHTML = 'Stelle Ottenute: ' + totalStars + "";
 }
 
 function giveStars()
 {
   totalStars += stars;
-  console.log(stars);
   if(level >= easy_levels+normal_levels-1 && level <= maxLevel)
   {
     stars = hard_levels_stars;
@@ -417,7 +395,7 @@ function resetButton()
 
 function showLetterBar()
 {
-  // store the DOM element with the class #UI_points on the UI_points variable.
+  // store the DOM element with the class #UI_stars on the UI_stars variable.
   let letterSelected = document.querySelector("#letterSelected");
   // refresh the UI.
   letterSelected.innerHTML = "";
@@ -461,7 +439,6 @@ function showLettersHint()
   else
   {
     alert("Il nome del colore è già stato rivelato, per questo livello non può più essere usato questo hint!");
-    points += hintLetterCost;
   }
   showStars();
 }
@@ -528,25 +505,8 @@ function resetVariables()
 {
   level = 0;
   showLevel();
-  points = 0;
   showStars();
   resetHints();
-}
-
-function hintLetterButton()
-{
-  if(confirm("Vuoi vedere una lettera del colore che devi indovinare? Sono " + hintLetterCost + " Punti!"))
-  {
-    if(points >= hintLetterCost)
-    {
-      points -= hintLetterCost;
-      initialHint();
-    }
-    else
-    {
-      alert("non hai i Punti!");
-    }
-  }
 }
 
 function initialHint()
@@ -568,7 +528,7 @@ function refreshUI()
 {
  // refresh the level UI.
  showLevel();
- // refresh the points UI.
+ // refresh the stars UI.
  showStars();
 // give the starting color to discovery to the main color button.
  showColor();
@@ -649,31 +609,31 @@ function giveRank()
 {
   if(totalStars >= 0 && totalStars  <= stars_needed_for_F)
   {
-    return "F";
+    return "Apprendista Esploratore";
   }
   else if(totalStars > stars_needed_for_F && totalStars <= stars_needed_for_E)
   {
-    return "E";
+    return "Esploratore in Erba";
   }
   else if(totalStars > stars_needed_for_E && totalStars <= stars_needed_for_D)
   {
-    return "D";
+    return "Esploratore Junior";
   }
   else if(totalStars > stars_needed_for_D && totalStars <= stars_needed_for_C)
   {
-    return "C";
+    return "Esploratore Indipendente";
   }
   else if(totalStars > stars_needed_for_C && totalStars <= stars_needed_for_B)
   {
-    return "B";
+    return "Esploratore Avanzato";
   }
   else if(totalStars > stars_needed_for_B && totalStars < stars_needed_for_A)
   {
-    return "A";
+    return "Esploratore Esperto";
   }
   else
   {
-    return "S";
+    return "Maestro Esploratore";
   }
 }
 /* modal in progress

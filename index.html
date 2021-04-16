@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Color Discovery è un gioco nel quale devi indovinare il nome del colore che c'è in centro.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Michael, Discovery, Primo, Color, Guessing, Game, Project">
+    <meta name="author" content="Michael Primo">
     <link rel="stylesheet" href="style.css">
-    <title>Color Game</title>
+    <title>Color Discovery</title>
 </head>
 <body>
+  <!-- The Main Container with everything except the modals -->
     <div id="flex-container">
-        <div id="UI_Row">
+      <!-- The row with the main informations at the top of the game. -->
+      <div id="UI_Row">
+        <div id="UI_totalstars">Stelle Ottenute:</div>
+    </div>  
+      <div id="UI_Row">
             <div id="UI_level">Livello 1</div>
             <div id="UI_stars">Stelle 3</div>
         </div>
-        
+        <!-- The main square with the color and letters/commands of the game. -->
         <div id="user-letters">
             <div class="letter" id="0"></div>
             <div class="letter" id="1"></div>
@@ -29,16 +37,23 @@
             <div class="letter" id="11"></div>
             <div id="color"></div>
         </div>
+        <!-- This part contains the row that contains the letters selected and from the hint. -->
         <div id="letterSelected"></div>
         <div id="hintSelected"></div>
         
+        <!-- This row contains extra useful commands. -->
         <div id="UI_Row">
-            
+            <!-- Use this if you want hints at the exchange of your stars. -->
             <button id="hardButton" onclick="hintManager()">Indizio</button>
+            <!-- Shuffle the position of the letters of the board. -->
             <button id="hardButton" onclick="hintShuffle()">Scombina</button>
+            <!-- Clear the Local Storage informations and start a new game. -->
             <button id="skipButton" onclick="resetSave()">Nuova partita</button>
+            <!-- If you misspell the name, press this button to reset the letter to the upper row. -->
             <button id="hardButton" onclick="resetButton()">Reset Lettere</button>
-            <!--debug <button id="hardButton" onclick="skipLevel()">Skip</button>
+            <!--
+              debug. Remove this is the modals are ready and you want to skip freely the levels. 
+            <button id="hardButton" onclick="skipLevel()">Skip</button>
             <button class="myBtn">Open Modal</button>
             <button class="myBtn">Open Modal 2</button>
              -->
@@ -90,7 +105,7 @@
     
     
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
 
