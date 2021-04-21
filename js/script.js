@@ -206,10 +206,10 @@ function showLevel()
   UI_level.innerHTML = 'Livello ' + (level + 1) + "";
 }
 
-//show the current points obtained on the UI
+//show the current stars obtained on the UI
 function showStars()
 {
-  // store the DOM element with the class #UI_points on the UI_points variable.
+  // store the DOM element with the class #UI_stars on the UI_stars variable.
   let UI_stars = document.querySelector("#UI_stars");
   // refresh the UI.
   UI_stars.innerHTML = 'Stelle ' + stars + "";
